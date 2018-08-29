@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drum Machine</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+	<script type="text/javascript">
+		var powerStatus = "OFF";
+		function playDrum(letter){
+			var url;
+			if(letter == 'Q' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3";
+			}
+			else if(letter == 'W' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3";
+			}
+			else if(letter == 'E' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3";
+			}
+			else if(letter == 'A' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3";
+			}
+			else if(letter == 'S' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3";
+			}
+			else if(letter == 'D' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3";
+			}
+			else if(letter == 'Z' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3";
+			}
+			else if(letter == 'X' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3";
+			}
+			else if(letter == 'C' && powerStatus == "ON"){
+				url = "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3";
+			}
+
+			var audio = new Audio(url);
+			audio.play();
+		}
+		function togglePower(){
+			if(document.getElementById("powerButtonCheckbox").checked){
+				powerStatus = "ON";
+			}
+			else{
+				powerStatus = "OFF";
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<div id="headerDiv">
+		<p id="headerHeading">The Silly Drum Machine</p>
+	</div>
+
+	<div id="subHeaderDiv">
+		<p id="subHeaderHeading">Made by Venkatesh Suvarna</p>
+	</div>
+
+	<div id="powerButtonDiv" class="flexcontainer">
+		<div id="powerText">Power</div>
+		<label class="switch">
+		  <input type="checkbox" id="powerButtonCheckbox" onclick="togglePower()">
+		  <span class="slider round"></span>
+		</label>
+	</div>
+
+	<div id="drumGridDiv">
+		<div class="grid-container">
+			<div class="grid-item" id="drumQ" onclick="playDrum('Q')">Q</div>
+			<div class="grid-item" id="drumW" onclick="playDrum('W')">W</div>
+			<div class="grid-item" id="drumE" onclick="playDrum('E')">E</div>
+			<div class="grid-item" id="drumA" onclick="playDrum('A')">A</div>
+			<div class="grid-item" id="drumS" onclick="playDrum('S')">S</div>
+			<div class="grid-item" id="drumD" onclick="playDrum('D')">D</div>
+			<div class="grid-item" id="drumZ" onclick="playDrum('Z')">Z</div>
+			<div class="grid-item" id="drumX" onclick="playDrum('X')">X</div>
+			<div class="grid-item" id="drumC" onclick="playDrum('C')">C</div>
+		</div>
+	</div>
+
+	<div id="instructionsDiv">
+		<p id="instructionHeading">Instructions</p>
+		<p>Press on any of the keys to play a sound!</p>
+	</div>
+
+</body>
+</html>
